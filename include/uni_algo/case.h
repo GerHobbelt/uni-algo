@@ -30,7 +30,7 @@ namespace una {
 
 namespace detail {
 
-template<typename Dst, typename Alloc, typename Src, size_t SizeX,
+template<typename Dst, typename Src, size_t SizeX,
 #if defined(UNI_ALGO_FORCE_CPP_ITERATORS)
     size_t(*FnMap)(typename Src::const_iterator, typename Src::const_iterator, typename Dst::iterator, int, type_codept)>
 #elif defined(UNI_ALGO_FORCE_C_POINTERS)
@@ -38,10 +38,8 @@ template<typename Dst, typename Alloc, typename Src, size_t SizeX,
 #else // Safe layer
     size_t(*FnMap)(safe::in<typename Src::const_pointer>, safe::end<typename Src::const_pointer>, safe::out<typename Dst::pointer>, int, type_codept)>
 #endif
-uaiw_constexpr Dst t_map(const Alloc& alloc, const Src& src, int mode, type_codept loc = 0)
+uaiw_constexpr void t_map(Dst & dst, const Src& src, int mode, type_codept loc = 0)
 {
-    Dst dst{alloc};
-
     const std::size_t length = src.size();
 
     if (length)
@@ -76,7 +74,20 @@ uaiw_constexpr Dst t_map(const Alloc& alloc, const Src& src, int mode, type_code
         dst.shrink_to_fit();
 #endif
     }
+}
 
+template<typename Dst, typename Alloc, typename Src, size_t SizeX,
+#if defined(UNI_ALGO_FORCE_CPP_ITERATORS)
+    size_t(*FnMap)(typename Src::const_iterator, typename Src::const_iterator, typename Dst::iterator, int, type_codept)>
+#elif defined(UNI_ALGO_FORCE_C_POINTERS)
+    size_t(*FnMap)(typename Src::const_pointer, typename Src::const_pointer, typename Dst::pointer, int, type_codept)>
+#else // Safe layer
+    size_t(*FnMap)(safe::in<typename Src::const_pointer>, safe::end<typename Src::const_pointer>, safe::out<typename Dst::pointer>, int, type_codept)>
+#endif
+uaiw_constexpr Dst t_map(const Alloc& alloc, const Src& src, int mode, type_codept loc = 0)
+{
+    Dst dst{alloc};
+    t_map<Dst, Src, SizeX, FnMap>(dst, src, mode, loc);
     return dst;
 }
 
