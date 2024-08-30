@@ -222,15 +222,15 @@ const size_t impl_x_norm_to_nfkc_utf16
 const size_t impl_x_norm_to_nfkd_utf16
 const size_t impl_x_norm_to_unaccent_utf16
 
-int impl_norm_is_nfc_utf8(it_in_utf8 first, it_end_utf8 last)
-int impl_norm_is_nfd_utf8(it_in_utf8 first, it_end_utf8 last)
-int impl_norm_is_nfkc_utf8(it_in_utf8 first, it_end_utf8 last)
-int impl_norm_is_nfkd_utf8(it_in_utf8 first, it_end_utf8 last)
+int impl_norm_is_nfc_utf8(it_in_utf8 first, it_end_utf8 last, bool check_stream_safe)
+int impl_norm_is_nfd_utf8(it_in_utf8 first, it_end_utf8 last, bool check_stream_safe)
+int impl_norm_is_nfkc_utf8(it_in_utf8 first, it_end_utf8 last, bool check_stream_safe)
+int impl_norm_is_nfkd_utf8(it_in_utf8 first, it_end_utf8 last, bool check_stream_safe)
 
-int impl_norm_is_nfc_utf16(it_in_utf16 first, it_end_utf16 last)
-int impl_norm_is_nfd_utf16(it_in_utf16 first, it_end_utf16 last)
-int impl_norm_is_nfkc_utf16(it_in_utf16 first, it_end_utf16 last)
-int impl_norm_is_nfkd_utf16(it_in_utf16 first, it_end_utf16 last)
+int impl_norm_is_nfc_utf16(it_in_utf16 first, it_end_utf16 last, bool check_stream_safe)
+int impl_norm_is_nfd_utf16(it_in_utf16 first, it_end_utf16 last, bool check_stream_safe)
+int impl_norm_is_nfkc_utf16(it_in_utf16 first, it_end_utf16 last, bool check_stream_safe)
+int impl_norm_is_nfkd_utf16(it_in_utf16 first, it_end_utf16 last, bool check_stream_safe)
 
 // return values:
 const int impl_norm_is_yes
