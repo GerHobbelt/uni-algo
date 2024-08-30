@@ -10,6 +10,12 @@
 //#include "perf_segment_utf16.h"
 //#include "perf_transform_utf16.h"
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     una_perf_main
+#endif
+
+extern "C"
 int main()
 {
     main5();

@@ -43,6 +43,12 @@
 #include "../../include/uni_algo/ext/translit/macedonian_to_latin_docs.h"
 #include "../../include/uni_algo/ext/translit/japanese_kana_to_romaji_hepburn.h"
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     una_test_clag_tidy_main
+#endif
+
+extern "C"
 int main()
 {
     return 0;

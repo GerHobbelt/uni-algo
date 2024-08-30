@@ -4,6 +4,12 @@
 
 #include "gen.h"
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     una_gen_main
+#endif
+
+extern "C"
 int main()
 {
     main3();

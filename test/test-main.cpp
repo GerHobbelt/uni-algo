@@ -4,6 +4,12 @@
 
 #include "main.h"
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     una_test_main
+#endif
+
+extern "C"
 int main()
 {
     main7();
