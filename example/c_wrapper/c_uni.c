@@ -51,7 +51,7 @@ typedef UNI_CHAR16    type_char16; // Can be 16-bit or more signed/unsigned
 typedef UNI_CHAR32    type_char32; // Can be 32-bit or more signed/unsigned
 
 // This file must be included first
-#include "impl/impl_types.h"
+#include "uni_algo/impl/impl_types.h"
 
 // We do not implement title case functions (part of Case module)
 // and unaccent functions (part of Normalization module) in this example
@@ -61,17 +61,17 @@ typedef UNI_CHAR32    type_char32; // Can be 32-bit or more signed/unsigned
 #define UNI_ALGO_DISABLE_PROP
 
 // Include Conversion module (doesn't need Unicode data tables)
-#include "impl/impl_conv.h"
+#include "uni_algo/impl/impl_conv.h"
 
 // Do not define it if you include Unicode data (impl/impl_data.h file) in a different .c file
 #define UNI_ALGO_STATIC_DATA
 
 // Include Case and Normalization modules
 #ifndef UNI_ALGO_DISABLE_CASE
-#include "impl/impl_case.h"
+#include "uni_algo/impl/impl_case.h"
 #endif
 #ifndef UNI_ALGO_DISABLE_NORM
-#include "impl/impl_norm.h"
+#include "uni_algo/impl/impl_norm.h"
 #endif
 
 void una_strfree(void* str)
@@ -607,14 +607,14 @@ bool una_norm_is_nfc_utf8(const type_char8* str)
 {
     size_t len = internal_strlen(str);
 
-    return impl_norm_is_nfc_utf8(str, str + len) == impl_norm_is_yes;
+    return impl_norm_is_nfc_utf8(str, str + len, true) == impl_norm_is_yes;
 }
 
 bool una_norm_is_nfd_utf8(const type_char8* str)
 {
     size_t len = internal_strlen(str);
 
-    return impl_norm_is_nfd_utf8(str, str + len) == impl_norm_is_yes;
+    return impl_norm_is_nfd_utf8(str, str + len, true) == impl_norm_is_yes;
 }
 
 #ifndef UNI_ALGO_DISABLE_NFKC_NFKD
@@ -622,14 +622,14 @@ bool una_norm_is_nfkc_utf8(const type_char8* str)
 {
     size_t len = internal_strlen(str);
 
-    return impl_norm_is_nfkc_utf8(str, str + len) == impl_norm_is_yes;
+    return impl_norm_is_nfkc_utf8(str, str + len, true) == impl_norm_is_yes;
 }
 
 bool una_norm_is_nfkd_utf8(const type_char8* str)
 {
     size_t len = internal_strlen(str);
 
-    return impl_norm_is_nfkd_utf8(str, str + len) == impl_norm_is_yes;
+    return impl_norm_is_nfkd_utf8(str, str + len, true) == impl_norm_is_yes;
 }
 #endif // UNI_ALGO_DISABLE_NFKC_NFKD
 
@@ -638,14 +638,14 @@ bool una_norm_is_nfc_utf16(const type_char16* str)
 {
     size_t len = internal_strlen16(str);
 
-    return impl_norm_is_nfc_utf16(str, str + len) == impl_norm_is_yes;
+    return impl_norm_is_nfc_utf16(str, str + len, true) == impl_norm_is_yes;
 }
 
 bool una_norm_is_nfd_utf16(const type_char16* str)
 {
     size_t len = internal_strlen16(str);
 
-    return impl_norm_is_nfd_utf16(str, str + len) == impl_norm_is_yes;
+    return impl_norm_is_nfd_utf16(str, str + len, true) == impl_norm_is_yes;
 }
 
 #ifndef UNI_ALGO_DISABLE_NFKC_NFKD
@@ -653,14 +653,14 @@ bool una_norm_is_nfkc_utf16(const type_char16* str)
 {
     size_t len = internal_strlen16(str);
 
-    return impl_norm_is_nfkc_utf16(str, str + len) == impl_norm_is_yes;
+    return impl_norm_is_nfkc_utf16(str, str + len, true) == impl_norm_is_yes;
 }
 
 bool una_norm_is_nfkd_utf16(const type_char16* str)
 {
     size_t len = internal_strlen16(str);
 
-    return impl_norm_is_nfkd_utf16(str, str + len) == impl_norm_is_yes;
+    return impl_norm_is_nfkd_utf16(str, str + len, true) == impl_norm_is_yes;
 }
 #endif // UNI_ALGO_DISABLE_NFKC_NFKD
 #endif // UNI_ALGO_DISABLE_UTF16
