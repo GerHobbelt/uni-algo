@@ -10,7 +10,7 @@
 #endif
 
 extern "C"
-int main()
+int main(void)
 {
     main7();
 

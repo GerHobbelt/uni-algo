@@ -44,7 +44,7 @@ public:
     }
 };
 
-int main()
+int main(void)
 {
     my_alloc<char> alloc;
 
@@ -101,7 +101,7 @@ class my_memory_resource : public std::pmr::memory_resource
 };
 
 
-int main()
+int main(void)
 {
     my_memory_resource mr;
     std::pmr::polymorphic_allocator<char> pa{&mr};

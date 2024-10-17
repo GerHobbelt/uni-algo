@@ -262,7 +262,7 @@ void example_print()
 
 } // namespace uni
 
-int main()
+int main(void)
 {
     // Test everything
     uni::example_fstream_and_back_inserter();

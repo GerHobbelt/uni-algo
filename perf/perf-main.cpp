@@ -16,7 +16,7 @@
 #endif
 
 extern "C"
-int main()
+int main(void)
 {
     main5();
     return 0;
