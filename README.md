@@ -55,19 +55,19 @@ Security. Performance. Usability. Portability.
 
 Security means:
 - None of the functions can ever produce an ill-formed UTF-8/16/32 sequence, even if the input was some random bytes;
-this also means that the data can never cause an undefined behavior.
+  this also means that the data can never cause an undefined behavior.
 - All standards are followed exactly as written,
-which also means that all the Unicode algorithms are conformant with The Unicode Standard.
+  which also means that all the Unicode algorithms are conformant with The Unicode Standard.
 - Test files provided by The Unicode Standard are used with many other tests.
 - The library never uses dangerous things like pointer casts etc.
 - The library has two levels: a low level of pure algorithms where very few things are allowed,
-and a wrapper level of very easy-to-use functions and ranges.
+  and a wrapper level of very easy-to-use functions and ranges.
 - The library does not use raw pointers or C arrays, and uses safe iterators and arrays with bounds checks through
-[the safe layer](https://github.com/uni-algo/uni-algo/blob/main/doc/SAFE_LAYER.md) in debug, with the ability to enable it in release.
+  [the safe layer](https://github.com/uni-algo/uni-algo/blob/main/doc/SAFE_LAYER.md) in debug, with the ability to enable it in release.
 - GCC with `-Wall` and many extra warnings is used in the development and Clang-Tidy is used as a static analyzer.
 
 Performance means:
-- The library is designed for the performance from the beginning.
+- The library is designed for performance from the beginning.
 - The performance is at least the same as other implementations.
 - Most of the optimization techniques that are mentioned in The Unicode Standard are used.
 - The library uses low-level optimizations when it's possible.
@@ -75,20 +75,20 @@ Performance means:
 Usability means:
 - The only dependency is the C++ standard library.
 - Most of the functions can be used in a single line. See examples below.
-- The library doesn't introduce new types for strings it uses: `std::string`, `std::u16string` etc.
+- The library doesn't introduce new types for strings; it uses: `std::string`, `std::u16string` etc.
 - Ranges and views are compatible with the C++ standard library.
 - The library doesn't use exceptions or RTTI, so it can be compiled with `-fno-exceptions` and `-fno-rtti`.
 - The library itself is header-only, but Unicode data (one .cpp file) must be compiled.
-Pure header-only version is also available.
+  A pure header-only version is also available.
 - You can disable modules or even a part of a module by using configuration defines
-that can drastically reduce the size of Unicode data that must be compiled.
+  that can drastically reduce the size of Unicode data that must be compiled.
 
 Portability means:
 - The library works even if all available types are 64-bit with `sizeof == 1`
-and/or fixed width types are unavailable and/or `CHAR_BIT` is not 8.
+  and/or fixed width types are unavailable and/or `CHAR_BIT` is not 8.
 - The exact same behavior on all platforms, the library doesn't use `std::locale`
-and things related to it because most of that stuff is broken
-(see [P2020R0](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p2020r0.pdf)).
+  and things related to it because most of that stuff is broken
+  (see [P2020R0](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p2020r0.pdf)).
 
 ## Usage
 
@@ -251,7 +251,7 @@ For these examples to work, you need to compile them in GCC/Clang with `-std=c++
 or in MSVC with `/utf-8 /std:c++17` (or higher) and a terminal that actually supports UTF-8.<br>
 These are the lowest versions the library has been tested on: GCC 7.3, Clang 8.0, MSVS 2017 15.9 (MSVC 19.16).
 
-Note that the terms code point, code unit, grapheme are used in the examples.
+Note that the terms 'code point', 'code unit' and 'grapheme' are used in the examples.
 You can read about them here:
 https://stackoverflow.com/questions/27331819/whats-the-difference-between-a-character-a-code-point-a-glyph-and-a-grapheme
 
@@ -677,7 +677,7 @@ The library implements a very simple collation algorithm
 that uses DUCET (Default Unicode Collation Element Table)
 to sort code points in the correct order instead of sorting them
 in code point order as a simple comparison function does.
-Case insensitive version of the algorithm is based on Default Caseless Matching.
+The case insensitive version of the algorithm is based on Default Caseless Matching.
 
 And a very simple search algorithm that is based on Default Caseless Matching.
 
@@ -697,7 +697,7 @@ These algorithms are planned for future versions of the library. UCA is long-ter
 ## Performance
 
 ICU (International Components for Unicode) and some functions from WinAPI are used
-for the performance comparison because these implementations are highly optimized.<br>
+for performance comparison because these implementations are highly optimized.<br>
 See `perf/result` folder.
 
 ## C Language
