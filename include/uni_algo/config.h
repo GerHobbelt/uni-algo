@@ -150,7 +150,8 @@ static_assert(std::is_unsigned<type_char32>::value && sizeof(type_char32) >= siz
 // NOTE: This include is needed for __cpp_lib_constexpr_string below
 #include <version>
 #if (__cpp_constexpr >= 201907L) && defined(__cpp_lib_constexpr_string) \
-    && !(defined(__clang__) && defined(__GLIBCXX__)) // constexpr standard lib is broken in Clang with libstdc++
+    && !(defined(__clang__) && defined(__GLIBCXX__) && (__clang_major__ < 19))
+    // constexpr standard lib is broken in Clang < 19 with libstdc++
 #define UNI_ALGO_CONSTEXPR
 #define uaiw_constexpr constexpr
 #endif
