@@ -14,7 +14,7 @@
 
 namespace una::detail::translit {
 
-// This translit class must be static and internal, use the same desigh for all transliterators.
+// This translit class must be static and internal, use the same design for all transliterators.
 class macedonian_to_latin_docs
 {
     // https://en.wikipedia.org/wiki/Romanization_of_Macedonian
