@@ -174,6 +174,30 @@ private:
     detail::rng::cache<utf8<iter_t, sent_t>> cached_begin;
 
 public:
+    utf8_view(utf8_view&& oth)
+        : range{std::move(oth.range)}
+    {}
+
+    utf8_view(const utf8_view& oth)
+        : range{oth.range}
+    {}
+
+    utf8_view& operator=(utf8_view&& oth)
+    {
+        range = std::move(oth.range);
+        cached_begin = false;
+        return *this;
+    }
+
+    utf8_view& operator=(const utf8_view& oth)
+    {
+        range = oth.range;
+        cached_begin = false;
+        return *this;
+    }
+
+    ~utf8_view() = default;
+
     uaiw_constexpr utf8_view() = default;
     uaiw_constexpr explicit utf8_view(Range r) : range{std::move(r)} {}
     //uaiw_constexpr Range base() const & { return range; }
@@ -351,6 +375,30 @@ private:
     detail::rng::cache<utf16<iter_t, sent_t>> cached_begin;
 
 public:
+    utf16_view(utf16_view&& oth)
+        : range{std::move(oth.range)}
+    {}
+
+    utf16_view(const utf16_view& oth)
+        : range{oth.range}
+    {}
+
+    utf16_view& operator=(utf16_view&& oth)
+    {
+        range = std::move(oth.range);
+        cached_begin = false;
+        return *this;
+    }
+
+    utf16_view& operator=(const utf16_view& oth)
+    {
+        range = oth.range;
+        cached_begin = false;
+        return *this;
+    }
+
+    ~utf16_view() = default;
+
     uaiw_constexpr utf16_view() = default;
     uaiw_constexpr explicit utf16_view(Range r) : range{std::move(r)} {}
     //uaiw_constexpr Range base() const & { return range; }
