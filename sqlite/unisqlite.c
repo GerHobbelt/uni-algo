@@ -55,9 +55,9 @@ int sqlite3_unisqlite_init(struct sqlite3* db, char** err_msg, const struct sqli
 #ifdef _WIN32
 __declspec(dllexport)
 #endif
-void uni_sqlite3_init()
+void uni_sqlite3_init(void)
 {
-    sqlite3_auto_extension((void(*)(void))(sqlite3_unisqlite_init));
+    sqlite3_auto_extension(sqlite3_unisqlite_init);
 }
 #endif // UNI_SQLITE_DYNAMIC_EXTENSION
 
